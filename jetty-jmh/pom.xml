@@ -12,6 +12,7 @@
 
   <properties>
     <bundle-symbolic-name>${project.groupId}.jmh</bundle-symbolic-name>
+    <spotbugs.skip>true</spotbugs.skip>
   </properties>
 
   <build>
