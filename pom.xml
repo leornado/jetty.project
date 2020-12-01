@@ -796,17 +796,6 @@
           <version>3.0.0</version>
         </plugin>
         <plugin>
-          <groupId>org.codehaus.mojo</groupId>
-          <artifactId>findbugs-maven-plugin</artifactId>
-          <version>3.0.5</version>
-          <configuration>
-            <findbugsXmlOutput>true</findbugsXmlOutput>
-            <xmlOutput>true</xmlOutput>
-            <effort>Max</effort>
-            <onlyAnalyze>org.eclipse.jetty.*</onlyAnalyze>
-          </configuration>
-        </plugin>
-        <plugin>
           <groupId>org.eclipse.m2e</groupId>
           <artifactId>lifecycle-mapping</artifactId>
           <version>1.0.0</version>
@@ -1423,6 +1412,7 @@
         <!-- Defines a SpotBugs effort. Use "Max" to maximize the scan depth -->
         <spotbugs.effort>Default</spotbugs.effort>
         <spotbugs.skip>false</spotbugs.skip>
+        <spotbugs.onlyAnalyze>org.eclipse.jetty.*</spotbugs.onlyAnalyze>
       </properties>
       <modules>
         <module>aggregates/jetty-all</module>
