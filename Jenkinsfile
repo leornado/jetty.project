@@ -43,7 +43,7 @@ pipeline {
             container( 'jetty-build' ) {
               timeout( time: 240, unit: 'MINUTES' ) {
                 mavenBuild( "jdk11", "clean install -Djacoco.skip=true -Perrorprone", "maven3")
-                recordIssues id: "jdk11", name: "Static Analysis jdk11", aggregatingResults: true, enabledForFailure: true, tools: [mavenConsole(), java(), checkStyle(), spotBugs(), pmdParser()]
+                recordIssues id: "jdk11", name: "Static Analysis jdk11", aggregatingResults: true, enabledForFailure: true, tools: [mavenConsole(), java(), checkStyle(), spotBugs(), pmdParser(), errorProne()]
               }
             }
           }
