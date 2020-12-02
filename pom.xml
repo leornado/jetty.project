@@ -58,6 +58,8 @@
     <maven.install.plugin.version>3.0.0-M1</maven.install.plugin.version>
     <maven.deploy.plugin.version>3.0.0-M1</maven.deploy.plugin.version>
 
+    <pmd.verbose>true</pmd.verbose>
+
     <!-- testing -->
     <it.debug>false</it.debug>
     <jetty.test.version>5.5</jetty.test.version>
@@ -261,9 +263,6 @@
             <goals>
               <goal>check</goal>
             </goals>
-            <configuration>
-              <verbose>true</verbose>
-            </configuration>
           </execution>
         </executions>
         <configuration>
@@ -1413,6 +1412,7 @@
         <spotbugs.effort>Default</spotbugs.effort>
         <spotbugs.skip>false</spotbugs.skip>
         <spotbugs.onlyAnalyze>org.eclipse.jetty.*</spotbugs.onlyAnalyze>
+        <pmd.verbose>false</pmd.verbose>
       </properties>
       <modules>
         <module>aggregates/jetty-all</module>
