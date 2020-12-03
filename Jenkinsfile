@@ -65,7 +65,7 @@ pipeline {
           agent { node { label 'linux' } }
           steps {
             container( 'jetty-build' ) {
-              timeout( time: 60, unit: 'MINUTES' ) {
+              timeout( time: 120, unit: 'MINUTES' ) {
                 mavenBuild( "jdk11",
                             "install javadoc:javadoc javadoc:aggregate-jar -DskipTests -Dpmd.skip=true -Dcheckstyle.skip=true",
                             "maven3")
@@ -79,7 +79,7 @@ pipeline {
           agent { node { label 'linux' } }
           steps {
             container( 'jetty-build' ) {
-              timeout( time: 60, unit: 'MINUTES' ) {
+              timeout( time: 120, unit: 'MINUTES' ) {
                 mavenBuild( "jdk8", "-T3 -Pcompact3 clean install -DskipTests", "maven3")
               }
             }
