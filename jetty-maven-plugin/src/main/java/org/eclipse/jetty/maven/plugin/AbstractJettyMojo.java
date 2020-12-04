@@ -18,22 +18,6 @@
 
 package org.eclipse.jetty.maven.plugin;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.net.MalformedURLException;
-import java.net.URL;
-import java.net.URLClassLoader;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Enumeration;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
-import java.util.Set;
-
 import org.apache.maven.artifact.Artifact;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
@@ -42,14 +26,27 @@ import org.apache.maven.project.MavenProject;
 import org.eclipse.jetty.security.LoginService;
 import org.eclipse.jetty.server.RequestLog;
 import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.server.SessionIdManager;
 import org.eclipse.jetty.server.ShutdownMonitor;
 import org.eclipse.jetty.server.handler.ContextHandler;
 import org.eclipse.jetty.server.handler.ContextHandlerCollection;
 import org.eclipse.jetty.server.handler.HandlerCollection;
+import org.eclipse.jetty.server.session.DefaultSessionIdManager;
+import org.eclipse.jetty.server.session.HouseKeeper;
 import org.eclipse.jetty.util.PathWatcher;
 import org.eclipse.jetty.util.StringUtil;
 import org.eclipse.jetty.util.resource.Resource;
 import org.eclipse.jetty.xml.XmlConfiguration;
+
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLClassLoader;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.*;
 
 /**
  * Common base class for most jetty mojos.
@@ -165,6 +162,13 @@ public abstract class AbstractJettyMojo extends AbstractMojo
      * @parameter alias="jettyConfig"
      */
     protected String jettyXml;
+    
+    
+    /**
+     * Change default interval of HouseKeeper. See --modules=sessions jetty.sessionScavengeInterval.seconds
+     * @parameter
+     */
+    protected int sessionScavengeInterval;
     
     
     /**
@@ -412,6 +416,22 @@ public abstract class AbstractJettyMojo extends AbstractMojo
         
         if (server == null)
             server = new Server();
+    
+        if (sessionScavengeInterval > 0) {
+            DefaultSessionIdManager _sessionIdManager = new DefaultSessionIdManager(server);
+            server.setSessionIdManager(_sessionIdManager);
+            server.manage(_sessionIdManager);
+    
+            HouseKeeper _houseKeeper = new HouseKeeper();
+            _sessionIdManager.setSessionHouseKeeper(_houseKeeper);
+
+            _houseKeeper.setSessionIdManager(_sessionIdManager);
+            _houseKeeper.setIntervalSec(sessionScavengeInterval);
+            _sessionIdManager.addBean(_houseKeeper, true);
+            _houseKeeper.start();
+            
+            _sessionIdManager.start();
+        }
     }
 
     public void startJetty () throws MojoExecutionException

@@ -4,6 +4,10 @@
     <artifactId>jetty-project</artifactId>
     <version>9.4.9.v20180320</version>
   </parent>
+
+  <groupId>com.wondersgroup.digital</groupId>
+  <version>9.4.9.v20201205</version>
+
   <modelVersion>4.0.0</modelVersion>
   <artifactId>jetty-maven-plugin</artifactId>
   <packaging>maven-plugin</packaging>
@@ -88,12 +92,12 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-util</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-webapp</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
       <exclusions>
         <exclusion>
           <groupId>javax.servlet</groupId>
@@ -104,57 +108,57 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-quickstart</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jaas</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-plus</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jndi</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-server</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-jmx</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-annotations</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty.websocket</groupId>
       <artifactId>javax-websocket-server-impl</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty.websocket</groupId>
       <artifactId>websocket-server</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>apache-jsp</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>apache-jstl</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
     </dependency>
      <dependency>
        <groupId>javax.transaction</groupId>
@@ -164,19 +168,19 @@
     <dependency>
       <groupId>org.eclipse.jetty</groupId>
       <artifactId>jetty-client</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty.http2</groupId>
       <artifactId>http2-client</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
       <scope>test</scope>
     </dependency>
     <dependency>
       <groupId>org.eclipse.jetty.http2</groupId>
       <artifactId>http2-http-client-transport</artifactId>
-      <version>${project.version}</version>
+      <version>9.4.9.v20180320</version>
       <scope>test</scope>
     </dependency>
   </dependencies>
