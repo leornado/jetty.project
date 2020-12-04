@@ -263,6 +263,10 @@
             <goals>
               <goal>check</goal>
             </goals>
+            <configuration>
+              <verbose>${pmd.verbose}</verbose>
+              <printFailingErrors>${pmd.verbose}</printFailingErrors>
+            </configuration>
           </execution>
         </executions>
         <configuration>
@@ -1439,10 +1443,6 @@
           <plugin>
             <groupId>com.github.spotbugs</groupId>
             <artifactId>spotbugs-maven-plugin</artifactId>
-            <configuration>
-              <skip>${spotbugs.skip}</skip>
-              <failOnError>${spotbugs.failOnError}</failOnError>
-            </configuration>
             <executions>
               <execution>
                 <id>spotbugs</id>
@@ -1451,6 +1451,8 @@
                 </goals>
                 <phase>verify</phase>
                 <configuration>
+                  <skip>${spotbugs.skip}</skip>
+                  <failOnError>${spotbugs.failOnError}</failOnError>
                   <xmlOutput>true</xmlOutput>
                   <spotbugsXmlOutput>false</spotbugsXmlOutput>
                   <effort>${spotbugs.effort}</effort>
